@@ -1,0 +1,13 @@
+[unit]
+Description=Captain Hawkeye FastAPI Alert Backend Service
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/var/www/captain-hawkeye-backend
+ExecStart=/var/www/captain-hawkeye-backend/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
